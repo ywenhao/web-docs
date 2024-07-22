@@ -1,6 +1,8 @@
 # vue3
 
 - 在vue3中，推荐`setup`写法，不推荐`option`写法，`setup` 写法更简洁，更易读，没有`this`指向问题，`hooks`提高代码逻辑复用性，也更易维护。
+- 在vue3中，重复性代码，多封装，在后续修改时，只需要修改封装的那一部分代码即可更易维护。
+- 不要一个文件几千行，读着累，也就更容易堆成 :shit:山。
 
 ## hooks
 
@@ -119,3 +121,7 @@ function getList2Name(key: string) { // [!code ++]
 - 上面这样的`computed`里面返回一个函数，并不会有缓存效果，相当于直接写函数
 - `vue`的`template`里面，响应式数据改变时，其响应式数据所在的函数也会重新执行
 - 上面错误的写法看起来很傻，但确实有人在项目里面真的这样写
+
+## 组件设计
+
+- 组件设计，尽量使用`props`传递数据，不要直接修改`props`， vue3.4之后可以使用`defineModel`，它的底层也是`props`结合 `emit`实现的，本质上算是`v-model`的语法糖,详见[defineModel](https://cn.vuejs.org/api/sfc-script-setup.html#definemodel)
