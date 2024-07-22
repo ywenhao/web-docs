@@ -3,8 +3,8 @@ import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import viteConfig from './vite.config'
 
 export default defineConfig({
-  title: "前端开发指南",
-  description: "Vue3 的前端开发指南",
+  title: '前端开发指南',
+  description: 'Vue3 的前端开发指南',
   lang: 'zh-CN',
   ignoreDeadLinks: true,
   markdown: {
@@ -35,27 +35,31 @@ export default defineConfig({
     },
 
     search: {
-      provider: 'local'
+      provider: 'local',
     },
 
     sidebar: {
-     '/standard': [
+      '/standard': [
         {
           text: '命名规范',
-          link: '/standard/naming-specification'
-        }
+          link: '/standard/naming-specification',
+        },
+        {
+          text: 'vue3',
+          link: '/standard/vue3',
+        },
       ],
       '/optimization': [
         {
           text: '代码优化',
-          link: '/optimization/code'
-        }
-      ]
+          link: '/optimization/code',
+        },
+      ],
     },
 
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/vuejs/vitepress' }
-    ]
+      { icon: 'github', link: 'https://github.com/vuejs/vitepress' },
+    ],
   },
 
   head: [
@@ -63,8 +67,8 @@ export default defineConfig({
       'meta',
       {
         name: 'baidu-site-verification',
-        content: 'codeva-UBvoEAzRIH'
-      }
+        content: 'codeva-UBvoEAzRIH',
+      },
     ],
     ['link', { rel: 'icon', href: '/favicon.svg', sizes: 'any', type: 'image/svg+xml' }],
     ['meta', { name: 'keywords', content: '前端开发指南，前端开发规范，vue3开发规范' }],
@@ -78,5 +82,5 @@ export default defineConfig({
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap' }],
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fira+Code&display=swap' }],
   ],
-  vite: viteConfig
+  vite: viteConfig,
 })

@@ -48,9 +48,14 @@ const PROVIDE_KEY = Symbol('PROVIDE_KEY') // [!code ++]
 ```ts
 const _count = 1
 function _getValue() {}
+
+class Product {
+  #count = 1
+}
 ```
 
 - 对于私有变量，使用`_`作为前缀，这是约定俗成的写法，方便区分私有变量和公共变量，增加可读性
+- `class`中，私有属性使用`#`作为前缀，详见[class私有属性](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Classes/Private_properties)
 
 ## 未使用的函数参数
 
