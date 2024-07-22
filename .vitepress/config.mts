@@ -19,12 +19,14 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://web-docs.nedink.cn/',
   },
+  srcDir: './docs',
   themeConfig: {
     logo: '/favicon.svg',
 
     nav: [
-      { text: 'Home', link: '/' },
-      { text: 'Examples', link: '/markdown-examples' }
+      { text: '首页', link: '/' },
+      { text: '开发规范', link: '/standard' },
+      { text: '代码优化', link: '/code-optimization' },
     ],
 
     footer: {

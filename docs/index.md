@@ -8,11 +8,11 @@ hero:
   tagline: 前端开发指南
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
+      text: 前端开发规范
+      link: /standard
     - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 代码优化
+      link: /code-optimization
 
 features:
   - title: Feature A
