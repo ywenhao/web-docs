@@ -9,8 +9,8 @@ export default defineConfig({
   ignoreDeadLinks: true,
   markdown: {
     theme: {
-      light: 'vitesse-light',
-      dark: 'vitesse-dark',
+      light: 'github-dark',
+      dark: 'github-dark',
     },
     codeTransformers: [
       transformerTwoslash(),
@@ -25,8 +25,8 @@ export default defineConfig({
 
     nav: [
       { text: '首页', link: '/' },
-      { text: '开发规范', link: '/standard' },
-      { text: '代码优化', link: '/code-optimization' },
+      { text: '开发规范', link: '/standard/naming-specification' },
+      { text: '代码优化', link: '/optimization/code' },
     ],
 
     footer: {
@@ -38,15 +38,20 @@ export default defineConfig({
       provider: 'local'
     },
 
-    sidebar: [
-      {
-        text: 'Examples',
-        items: [
-          { text: 'Markdown Examples', link: '/markdown-examples' },
-          { text: 'Runtime API Examples', link: '/api-examples' }
-        ]
-      }
-    ],
+    sidebar: {
+     '/standard': [
+        {
+          text: '命名规范',
+          link: '/standard/naming-specification'
+        }
+      ],
+      '/optimization': [
+        {
+          text: '代码优化',
+          link: '/optimization/code'
+        }
+      ]
+    },
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/vuejs/vitepress' }

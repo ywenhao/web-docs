@@ -9,10 +9,10 @@ hero:
   actions:
     - theme: brand
       text: 前端开发规范
-      link: /standard
+      link: /standard/naming-specification
     - theme: alt
       text: 代码优化
-      link: /code-optimization
+      link: /optimization/code
 
 features:
   - title: Feature A
