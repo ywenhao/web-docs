@@ -10,9 +10,11 @@
 
   --vp-c-text-code: #528d52;
 
-  --vp-code-block-bg: rgba(125, 125, 125, 0.04);
-  --vp-code-copy-code-bg: rgba(125, 125, 125, 0.1);
-  --vp-code-copy-code-hover-bg: rgba(125, 125, 125, 0.2);
+  --vp-code-block-bg: #292d3e;
+  --vp-code-copy-code-hover-bg: #343848;
+  --vp-code-copy-code-bg: #343848;
+  --vp-code-copy-code-border-color: #343848;
+  --vp-code-copy-code-hover-border-color: #343848;
 
   --vp-c-disabled-bg: rgba(125, 125, 125, 0.2);
   /* fix contrast on gray cards: used by --vp-c-text-2 */
@@ -31,10 +33,12 @@
   --vp-custom-block-tip-border: #44bd8730;
 
   --vp-code-color: #729772;
+
+  --vp-code-copy-code-active-text: rgba(235, 235, 235, .6);
 }
 
 .dark {
-  --vp-code-block-bg: var(--vp-c-bg-alt);
+  --vp-code-block-bg: #242424;
   --vp-c-text-code: #c0cec0;
   /* fix contrast on gray cards: check the same above (this is the default) */
   --vp-c-text-dark-2: rgba(235, 235, 235, 0.6);
