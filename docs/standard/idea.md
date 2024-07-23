@@ -153,6 +153,11 @@
 - Identifier: `donjayamante.githistory`
 - 显示git历史记录，方便查看代码修改记录
 
+### Image preview
+
+- Identifier: `kisstkondoros.vscode-gutter-preview`
+- 显示图片预览，方便查看图片
+
 ### Color Highlight
 
 - Identifier: `naumovs.color-highlight`
