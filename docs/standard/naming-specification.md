@@ -12,9 +12,11 @@ function b() {} // [!code --]
 
 const productCount = 1 // [!code ++]
 function createCount() {} // [!code ++]
+function handleClick() {} // [!code ++]
 ```
 
 - 变量和函数名使用驼峰命名法，首字母小写，用单词增加可读性
+- 用户手动触发的函数，使用`handle`作为前缀，比如`handleClick`
 
 ## class/typescript
 

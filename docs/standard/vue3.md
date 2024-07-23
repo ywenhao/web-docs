@@ -163,6 +163,18 @@ const props = withDefaults(defineProps<{
 - 如果希望默认值是空对象`{}`,那么同理默认值应该是函数`() => ({})`
 - 详见[withDefaults](https://cn.vuejs.org/guide/typescript/composition-api.html#props-default-values)
 
+## emit
+
+```ts
+const emit = defineEmits<{
+  change: [id: number]
+  update: [value: string]
+}>()
+```
+
+- 建议使用上面的方式进行标注，更简洁
+- 详见[针对类型的 props/emit 声明](https://cn.vuejs.org/api/sfc-script-setup.html#type-only-props-emit-declarations)
+
 ## ref
 
 ```vue
