@@ -101,6 +101,8 @@
 
 ## 插件
 
+- 建议下面的插件全都安装上
+
 ### Vue - Official (Valor)
 
 - Identifier: `vue.volar`
