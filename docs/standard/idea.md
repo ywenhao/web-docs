@@ -143,6 +143,16 @@
 - 注释插件，支持多种语言
 - 显示[JsDoc](https://www.jsdoc.com.cn/)的一些提示
 
+### GitLens — Git supercharged
+
+- Identifier: `eamodio.gitlens`
+- 显示git信息，方便查看代码提交记录
+
+### Git History
+
+- Identifier: `donjayamante.githistory`
+- 显示git历史记录，方便查看代码修改记录
+
 ### Color Highlight
 
 - Identifier: `naumovs.color-highlight`
