@@ -16,9 +16,12 @@ hero:
 
 features:
   - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    icon: 🚀
+    details: 一些开发规范
   - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    icon: ⚙️
+    details: 一些优化方案
   - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+    icon: ⚡
+    details: 一些学习指南
 ---
