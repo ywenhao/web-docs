@@ -3,8 +3,9 @@
 - 在vue3中，推荐`setup`写法，不推荐`option`写法，`setup` 写法更简洁，更易读，没有`this`指向问题，`hooks`提高代码逻辑复用性，也更易维护。
 - 在vue3中，重复性代码，多封装，在后续修改时，只需要修改封装的那一部分代码即可更易维护。
 - 不要一个文件几千行，读着累，也就更容易堆成 :shit:山。
+- 写业务不建议`jsx`，vue针对jsx的diff优化没有template好。
 
-## hooks
+## hooks(composables)
 
 // hooks/useQuery.ts
 
@@ -41,6 +42,7 @@ export function useQuery<T extends Query>() {
 
 - 文件放在`hooks`目录下
 - 文件名和函数名一致，以`use`开头
+- vue里面又叫`composables`，意思是可复用的组合函数，`react`里面叫`hooks`，`composables`单词太复杂了，所以大家还是叫`hooks`顺口
 
 ## store(pinia)
 
@@ -182,6 +184,7 @@ function add() {
 ```
 
 - 用`ref`获取一个组件实例，需要修改组件实例里面的数据时，为了不破坏数据流向，应该在组件内部`defineExpose`暴露一个修改数据的函数，然后在父组件中调用该方法
+- 使用`InstanceType`和`typeof`组合来获取子组件的实例类型，可以获得相应的代码提示，包括子组件`defineExpose`暴露的方法和属性
 
 ## 泛型
 

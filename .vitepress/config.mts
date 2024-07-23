@@ -27,6 +27,7 @@ export default defineConfig({
       { text: '首页', link: '/' },
       { text: '开发规范', link: '/standard/naming-specification' },
       { text: '代码优化', link: '/optimization/code' },
+      { text: '学习指南', link: '/learn' },
     ],
 
     footer: {
@@ -48,11 +49,27 @@ export default defineConfig({
           text: 'vue3',
           link: '/standard/vue3',
         },
+        {
+          text: '编辑器',
+          link: '/standard/idea',
+        },
       ],
       '/optimization': [
         {
+          text: 'ts类型修复',
+          link: '/optimization/typescript',
+        },
+        {
           text: '代码优化',
           link: '/optimization/code',
+        },
+        {
+          text: '性能优化',
+          link: '/optimization/performance',
+        },
+        {
+          text: 'vue3',
+          link: '/optimization/vue3',
         },
       ],
     },
