@@ -122,6 +122,86 @@ function getList2Name(key: string) { // [!code ++]
 - `vue`的`template`里面，响应式数据改变时，其响应式数据所在的函数也会重新执行
 - 上面错误的写法看起来很傻，但确实有人在项目里面真的这样写
 
-## 组件设计
+## props
 
-- 组件设计，尽量使用`props`传递数据，不要直接修改`props`， vue3.4之后可以使用`defineModel`，它的底层也是`props`结合 `emit`实现的，本质上算是`v-model`的语法糖,详见[defineModel](https://cn.vuejs.org/api/sfc-script-setup.html#definemodel)
+```vue
+<script setup lang="ts">
+const props = defineProps<{
+  title: string
+  likes?: number
+  visible?: boolean
+}>()
+
+const modelValue = defineModel<boolean>()
+
+console.log(props.visible) // false
+</script>
+
+<template>
+  <!-- 仅写上 prop 但不传值，会隐式转换为 `true` -->
+  <BlogPost is-published />
+</template>
+```
+
+- 都使用`typescript`了，声明`props`、`emit`和`defineModel`用其`typescript`的声明方式
+- 父组件引用子组件时，`visible`带有`?`可选符，如果不给子组件传递`visible`，因为`visible`的类型是`boolean`,vue在底层做了转换，那么`props.visible`的值就是`false`
+- 尽量使用`props`传递数据，不要直接修改`props`， vue3.4之后可以使用`defineModel`，它的底层也是`props`结合 `emit`实现的，本质上算是`v-model`的语法糖,详见[defineModel](https://cn.vuejs.org/api/sfc-script-setup.html#usage-with-typescript)
+
+```vue
+<script lang="ts" setup>
+const props = withDefaults(defineProps<{
+  list?: string[]
+}>(), {
+  list: () => []
+})
+</script>
+```
+
+- 上面代码中，`list`是可选的，如果不传值，则使用默认值`[]`,值得注意的是`list`的默认值需要是函数`() => []`
+- 如果希望默认值是空对象`{}`,那么同理默认值应该是函数`() => ({})`
+- 详见[withDefaults](https://cn.vuejs.org/guide/typescript/composition-api.html#props-default-values)
+
+## ref
+
+```vue
+<script lang="ts" setup>
+import { ref } from 'vue'
+import Child from './Child.vue'
+
+const childRef = ref<InstanceType<typeof Child>>()
+
+function add() {
+  childRef.value.count++ // [!code --]
+  childRef.value?.add() // [!code ++]
+}
+</script>
+
+<template>
+  <Child ref="childRef" />
+</template>
+```
+
+- 用`ref`获取一个组件实例，需要修改组件实例里面的数据时，为了不破坏数据流向，应该在组件内部`defineExpose`暴露一个修改数据的函数，然后在父组件中调用该方法
+
+## 泛型
+
+```vue
+<script lang="ts" setup generic="T extends Item">
+export interface Item {
+  id: string
+  name: string
+}
+
+const props = defineProps<{
+  data: T[]
+}>()
+
+function add(item: T) {
+  console.log(item)
+}
+</script>
+```
+
+- 上面代码中，`T`是泛型，`generic="T extends Item"`表示`T`继承于`Item`, 父组件的传值的数据类型必须是`{id: string; name: string}[]`，或者它的扩展。
+- 顺便一提，`vue`文件里面的类型是可以`export`的，在其他地方可以使用的。如果类型定义很多，很混乱的话，建议在`types.ts`里面定义好，然后在`vue`文件里面`import`使用。
+- 详见[泛型](https://cn.vuejs.org/api/sfc-script-setup.html#generics)
