@@ -220,3 +220,34 @@ function add(item: T) {
 - 上面代码中，`T`是泛型，`generic="T extends Item"`表示`T`继承于`Item`, 父组件的传值的数据类型必须是`{id: string; name: string}[]`，或者它的扩展。
 - 顺便一提，`vue`文件里面的类型是可以`export`的，在其他地方可以使用的。如果类型定义很多，很混乱的话，建议在`types.ts`里面定义好，然后在`vue`文件里面`import`使用。
 - 详见[泛型](https://cn.vuejs.org/api/sfc-script-setup.html#generics)
+
+## 组件的设计
+
+### 组件架构
+
+<img src="/static/component-design-1.svg" />
+
+- 符合这样的设计，那么在`vue3`里面，父组件引用子组件时，可以这样写
+
+```vue
+<script setup lang="ts">
+import { ref } from 'vue'
+import Child from './Child.vue'
+import Child2 from './Child2.vue'
+
+const data = ref()
+</script>
+
+<template>
+  <Child :data="data" />
+  <Child2 :data="data" />
+</template>
+```
+
+### 数据流向
+
+<img src="/static/component-design-2.svg" />
+
+- 父组件`data`传递给子组件，层级不深的用`props`传递，层级深的可以用用`provide/inject`传递，也可以使用`store`传递
+- **不要在父组件里面通过`ref`直接调用子组件方法**,当组件复杂度上来后，会变得难以维护，数据流向混乱。
+- 父组件`data`传递给子组件，子组件应该有自己的组件方法和状态，子组件接受到`data`这个响应式数据后，子组件自己内部使用`watch`等方式触发相应的操作。
