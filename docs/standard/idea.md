@@ -182,9 +182,6 @@
       "};",
       "</script>",
       ""
-      // "<style lang=\"scss\" scoped>",
-      // "</style>",
-      // ""
     ],
     "description": "Log output to vue2"
   },
@@ -198,9 +195,6 @@
       "<script setup lang=\"ts\">",
       "</script>",
       ""
-      // "<style lang=\"scss\" scoped>",
-      // "</style>",
-      // ""
     ],
     "description": "Log output to vue3"
   },
@@ -221,9 +215,6 @@
       "}>()",
       "</script>",
       ""
-      // "<style lang=\"scss\" scoped>",
-      // "</style>",
-      // ""
     ],
     "description": "Log output to vue3"
   },
@@ -237,9 +228,6 @@
       "<script setup>",
       "</script>",
       ""
-      // "<style lang=\"scss\" scoped>",
-      // "</style>",
-      // ""
     ],
     "description": "Log output to vue3"
   },
@@ -254,9 +242,6 @@
       "  <slot />",
       "</template>",
       ""
-      // "<style lang=\"scss\" scoped>",
-      // "</style>",
-      // ""
     ],
     "description": "Log output to vue3"
   }
