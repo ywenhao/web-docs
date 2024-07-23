@@ -103,59 +103,59 @@
 
 ### Vue - Official (Valor)
 
-- Identifier: vue.volar
+- Identifier: `vue.volar`
 - vue官方插件，支持vue3
 
 ### Error Lens
 
-- Identifier: usernamehw.errorlens
+- Identifier: `usernamehw.errorlens`
 - 错误提示插件，直接把错误提示显示在代码当前行后面，方便直接查看
 
 ### Code Spell Checker
 
-- Identifier: streetsidesoftware.code-spell-checker
+- Identifier: `streetsidesoftware.code-spell-checker`
 - 代码单词拼写检查，单词不正确时会有蓝色波浪线显示
 
 ### ESLint
 
-- Identifier: dbaeumer.vscode-eslint
+- Identifier: `dbaeumer.vscode-eslint`
 - 语法检查，支持多种语言
 
 ### Prettier - Code Formatter
 
-- Identifier: esbenp.prettier-vscode
+- Identifier: `esbenp.prettier-vscode`
 - 代码格式化，支持多种语言，一般配合`eslint`一起使用
 - 在`eslint-v9`之后，社区有专门针对代码风格的插件，所以有的项目没有配置`prettier`,只配置了`eslint`，但是也有代码格式化功能。
 
 ### TODO Highlight
 
-- Identifier: wayou.vscode-todo-highlight
+- Identifier: `wayou.vscode-todo-highlight`
 - TODO高亮插件，方便查看代码中需要修改的地方
 
 ### Todo Tree
 
-- Identifier: gruntfuggly.todo-tree
+- Identifier: `gruntfuggly.todo-tree`
 - 把代码中的todo注释归类在侧边栏中，方便查看
 
 ### Better Comments
 
-- Identifier: aaron-bond.better-comments
+- Identifier: `aaron-bond.better-comments`
 - 注释插件，支持多种语言
 - 显示[JsDoc](https://www.jsdoc.com.cn/)的一些提示
 
 ### Color Highlight
 
-- Identifier: naumovs.color-highlight
+- Identifier: `naumovs.color-highlight`
 - 在代码中直接显示颜色，方便查看，例如：`#fff`
 
 ### DotENV
 
-- Identifier: mikestead.dotenv
+- Identifier: `mikestead.dotenv`
 - 解析`.env`文件，.env 代码高亮
 
 ### EditorConfig for VS Code
 
-- Identifier: editorconfig.editorconfig
+- Identifier: `editorconfig.editorconfig`
 - 解析项目下`.editorconfig`文件，统一缩进，换行符等，优先级比`eslint`和`prettier`低
 
 ## 代码片段
