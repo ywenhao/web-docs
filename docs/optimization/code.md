@@ -26,8 +26,117 @@ function add() {
 }
 ```
 
+```ts
+function checkStatus() { // [!code --]
+  if (isLogin()) { // [!code --]
+    if (isVip()) { // [!code --]
+      if (isDoubleCheck()) { // [!code --]
+        done() // [!code --]
+      }
+      else { // [!code --]
+        throw new Error('不要重复点击') // [!code --]
+      } // [!code --]
+    }
+    else { // [!code --]
+      throw new Error('不是会员') // [!code --]
+    }// [!code --]
+  }
+  else { // [!code --]
+    throw new Error('未登录') // [!code --]
+  } // [!code --]
+} // [!code --]
+
+function checkStatus() { // [!code ++]
+  if (!isLogin()) // [!code ++]
+    throw new Error('未登录') // [!code ++]
+
+  if (!isVip()) // [!code ++]
+    throw new Error('不是会员') // [!code ++]
+
+  if (!isDoubleCheck()) // [!code ++]
+    throw new Error('不要重复点击') // [!code ++]
+
+  done() // [!code ++]
+}
+```
+
 - 在函数体中，先把否定的条件提前，`return`掉，后面只处理正面的逻辑。好处就是，写的时候思维不容易分散，写起来更清晰。
+
+## 可选链简化判断和调用
+
+```ts
+if ( // [!code --]
+  store.getters // [!code --]
+  && store.getters.userInfo // [!code --]
+  && store.getters.userInfo.menus // [!code --]
+) { // [!code --]
+  // 逻辑...// [!code --]
+}// [!code --]
+
+if (store?.getters?.userInfo?.menus) { // [!code ++]
+  // 逻辑...// [!code ++]
+}// [!code ++]
+
+// 函数调用
+props.onChange && props.onChange(e) // [!code --]
+
+props?.onChange?.(e) // [!code ++]
+```
+
+## 函数拆分
+
+```ts
+function checkGameStatus() { // [!code --]
+  if (remaining === 0 // [!code --]
+    || (remaining === 1 && remainingPlayers === 1) // [!code --]
+    || remainingPlayers === 0) { // [!code --]
+    quitGame()// [!code --]
+  } // [!code --]
+} // [!code --]
+
+function isGameOver() { // [!code ++]
+  return ( // [!code ++]
+    remaining === 0 // [!code ++]
+    || (remaining === 1 && remainingPlayers === 1) // [!code ++]
+    || remainingPlayers === 0 // [!code ++]
+  ) // [!code ++]
+} // [!code ++]
+
+function checkGameStatus() { // [!code ++]
+  if (isGameOver()) { // [!code ++]
+    quitGame() // [!code ++]
+  } // [!code ++]
+} // [!code ++]
+```
+
 - 代码逻辑复杂，可以按逻辑拆分成多个函数，方便维护。
+
+## 函数传参优化
+
+```ts
+function getMyInfo(name, age, gender, address, phone, email) { // [!code --]
+  // ...
+}// [!code --]
+
+// 行参封装成对象，对象函数内部解构
+function getMyInfo(options) { // [!code ++]
+  const { name, age, gender, address, phone, email } = options // [!code ++]
+  // ...
+} // [!code ++]
+
+getMyInfo( // [!code ++]
+  { // [!code ++]
+    name: '鸽鸽', // [!code ++]
+    age: 18, // [!code ++]
+    gender: '男', // [!code ++]
+    address: '新世界', // [!code ++]
+    phone: '123456789', // [!code ++]
+    email: '123456789@email.com' // [!code ++]
+  } // [!code ++]
+) // [!code ++]
+```
+
+## include 代替 ||
 
 ```ts
 import { ref } from 'vue'
@@ -35,13 +144,13 @@ import { ref } from 'vue'
 const type = ref(0)
 
 function test() {
-  if (type === 1 || type === 2 || type === 3) { // [!code--]
-    console.log('ok')// [!code--]
-  }// [!code--]
+  if (type === 1 || type === 2 || type === 3) { // [!code --]
+    console.log('ok') // [!code --]
+  } // [!code --]
 
-  if ([1, 2, 3].includes(type.value)) { // [!code++]
-    console.log('ok')// [!code++]
-  }
+  if ([1, 2, 3].includes(type.value)) { // [!code ++]
+    console.log('ok') // [!code ++]
+  } // [!code ++]
 }
 ```
 
@@ -73,6 +182,56 @@ function test(val: Type) {
 }
 ```
 
+```ts
+// switch case
+function statusMap(status: string) { // [!code --]
+  switch (status) { // [!code --]
+    case 'success': // [!code --]
+      return 'SuccessFully' // [!code --]
+    case 'fail': // [!code --]
+      return 'failed' // [!code --]
+    case 'danger': // [!code --]
+      return 'dangerous' // [!code --]
+    case 'info': // [!code --]
+      return 'information' // [!code --]
+    case 'text': // [!code --]
+      return 'texts' // [!code --]
+    default: // [!code --]
+      return status // [!code --]
+  }
+}
+
+// if else
+function statusMap(status: string) { // [!code --]
+  if (status === 'success') // [!code --]
+    return 'SuccessFully' // [!code --]
+  else if (status === 'fail') // [!code --]
+    return 'failed' // [!code --]
+  else if (status === 'danger') // [!code --]
+    return 'dangerous' // [!code --]
+  else if (status === 'info') // [!code --]
+    return 'information' // [!code --]
+  else if (status === 'text') // [!code --]
+    return 'texts' // [!code --]
+  else return status // [!code --]
+}
+
+// 使用映射进行优化
+const STATUS_MAP = { // [!code ++]
+  success: 'SuccessFully', // [!code ++]
+  fail: 'failed', // [!code ++]
+  warn: 'warning', // [!code ++]
+  danger: 'dangerous', // [!code ++]
+  info: 'information', // [!code ++]
+  text: 'texts'// [!code ++]
+}
+
+function statusMap(status: string) { // [!code ++]
+  return STATUS_MAP[status] ?? status // [!code ++]
+} // [!code ++]
+```
+
+- `switch`语法在javascript中，看起来层级很深，完全可以用映射代替
 - 可以用对象来代替多级`if`，后续添加新类型，只需要在对象中添加即可。
 - 也可以用 `new Map()`，道理是一样的
 

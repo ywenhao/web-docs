@@ -221,6 +221,17 @@ function add(item: T) {
 - 顺便一提，`vue`文件里面的类型是可以`export`的，在其他地方可以使用的。如果类型定义很多，很混乱的话，建议在`types.ts`里面定义好，然后在`vue`文件里面`import`使用。
 - 详见[泛型](https://cn.vuejs.org/api/sfc-script-setup.html#generics)
 
+## devtools
+
+- 这个插件很好用，但是不知道为什么还是有很多人不用
+- 有vite插件版本和chrome插件版本
+- 亮点
+  1. 可以很清晰的看到组件结构
+  2. 2直接从dom跳转到编辑器的代码行位置
+  3. 可以很清晰的看到组件的`props`、`data`、`computed`、`watch`等，调试的时候减少`console.log`的次数
+  4. 可以看到pinia的数据
+  5. 在vite版本下还有很多新功能值得探索，chrome版本后续会跟进
+
 ## 组件的设计
 
 ### 组件架构

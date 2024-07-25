@@ -46,6 +46,10 @@ export default defineConfig({
           link: '/standard/naming-specification',
         },
         {
+          text: '提交规范',
+          link: '/standard/commit',
+        },
+        {
           text: 'vue3',
           link: '/standard/vue3',
         },

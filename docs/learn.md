@@ -26,6 +26,7 @@
 ## 文档、库收集
 
 - [MDN](https://developer.mozilla.org/zh-CN/)
+- [JsDoc](https://www.jsdoc.com.cn/)
 - [typescript-utility-types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
 - [typescript教程](https://wangdoc.com/typescript/)
 - [type-challenges-类型体操](https://github.com/type-challenges/type-challenges)

@@ -99,3 +99,16 @@ type A<T> = T extends true ? 1 : never
 - never是ts中所有类型的子类，`never`类型表示永不存在的值，比如`throw new Error()`
 - 配合`never`，可以写出一些类型检查的函数
 - `never`在[类型体操](https://github.com/type-challenges/type-challenges)中，可以用来表示没有。ts类型中没有`a || b` 和 `a && b`语法，但是可以用`never`来模拟。
+
+# @ts-ignore/@ts-expect-error
+
+```ts
+const item = {
+  alipayAccount: '',
+  // eslint-disable-next-line ts/ban-ts-comment
+  // @ts-ignore
+  _id: uni.$u.guid(),
+}
+```
+
+- 使用`@ts-ignore`可以忽略报错，但是类型可以自己修复的时候不建议使用
