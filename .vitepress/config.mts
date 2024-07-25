@@ -57,6 +57,10 @@ export default defineConfig({
           text: '编辑器',
           link: '/standard/idea',
         },
+        {
+          text: '项目流程规范',
+          link: '/standard/project',
+        },
       ],
       '/optimization': [
         {
