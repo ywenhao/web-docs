@@ -259,6 +259,7 @@ async function test() {
 - 用array 的 api，每个变量单独写出来，不要揉到一个for循环里面，代码可读性更好
 - 合理使用三目运算符，也能提高可读性
 - 代码换行分块
+- [MDN Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95)
 
 ## promise
 
