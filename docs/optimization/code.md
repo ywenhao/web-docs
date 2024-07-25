@@ -198,8 +198,8 @@ function statusMap(status: string) { // [!code --]
       return 'texts' // [!code --]
     default: // [!code --]
       return status // [!code --]
-  }
-}
+  } // [!code --]
+} // [!code --]
 
 // if else
 function statusMap(status: string) { // [!code --]
@@ -214,7 +214,7 @@ function statusMap(status: string) { // [!code --]
   else if (status === 'text') // [!code --]
     return 'texts' // [!code --]
   else return status // [!code --]
-}
+} // [!code --]
 
 // 使用映射进行优化
 const STATUS_MAP = { // [!code ++]
@@ -223,8 +223,8 @@ const STATUS_MAP = { // [!code ++]
   warn: 'warning', // [!code ++]
   danger: 'dangerous', // [!code ++]
   info: 'information', // [!code ++]
-  text: 'texts'// [!code ++]
-}
+  text: 'texts' // [!code ++]
+} // [!code ++]
 
 function statusMap(status: string) { // [!code ++]
   return STATUS_MAP[status] ?? status // [!code ++]
