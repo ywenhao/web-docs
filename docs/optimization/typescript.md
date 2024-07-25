@@ -125,6 +125,8 @@ function getList<T>(list: T[]): T {
 }
 ```
 
+// request hooks
+
 ```ts
 import { type Ref, computed, reactive, ref, watch } from 'vue'
 
