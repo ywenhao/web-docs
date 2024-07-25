@@ -15,7 +15,8 @@
     "typeof",
     "unocss",
     "vitepress",
-    "vitesse"
+    "vitesse",
+    "webstorm"
   ],
 
   "typescript.tsdk": "node_modules/typescript/lib",
