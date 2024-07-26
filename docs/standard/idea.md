@@ -377,3 +377,21 @@
   }
 }
 ```
+
+## webstorm 配置格式化
+
+1. webstorm 全局配置修改需要在未打开项目的时候进行设置
+2. 第一次打开项目生成`.idea`文件夹的时候，才会读取全局配置。
+3. 不是第一次打开的删掉`.idea`，重新打开即可。
+
+### step1
+
+<img src="/static/webstorm1.png" />
+
+### step2
+
+<img src="/static/webstorm2.png" />
+
+### step3
+
+<img src="/static/webstorm3.png" />
