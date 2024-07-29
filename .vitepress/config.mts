@@ -64,12 +64,12 @@ export default defineConfig({
       ],
       '/optimization': [
         {
-          text: 'ts类型修复',
-          link: '/optimization/typescript',
-        },
-        {
           text: '代码优化',
           link: '/optimization/code',
+        },
+        {
+          text: 'ts类型修复',
+          link: '/optimization/typescript',
         },
         {
           text: '性能优化',

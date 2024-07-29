@@ -5,6 +5,28 @@
 - 不要一个文件几千行，读着累，也就更容易堆成 :shit:山。
 - 写业务不建议`jsx`，vue针对jsx的diff优化没有template好。
 
+## 不要使用`prototype`
+
+```ts
+// eslint-disable-next-line no-extend-native
+Date.prototype.format = function () { // [!code --]
+  // xxxxx // [!code --]
+} // [!code --]
+
+const date = formatDate(new Date()) // [!code ++]
+
+function formatDate(date: Date) { // [!code ++]
+  // 时间处理逻辑 // [!code ++]
+} // [!code ++]
+
+// vue3
+const app = createApp() // [!code --]
+app.config.globalProperties.$formatDate = formatDate // [!code --]
+```
+
+- 不要在对象和方法的原型上定义属性和方法，因为所有实例都共享同一个原型对象，保不住被人也在项目里面某个角落也修改了`prototype`上同名的属性和方法，建议用`纯函数`。
+- vue3中，`app.config.globalProperties`，在vue2中是`Vue.prototype`，也不建议使用，不容易追踪调用来源，同样用函数直接调用的方式代替。
+
 ## hooks(composables)
 
 // hooks/useQuery.ts

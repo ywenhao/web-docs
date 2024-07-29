@@ -261,6 +261,34 @@ async function test() {
 - 代码换行分块
 - [MDN Array](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Array#%E5%AE%9E%E4%BE%8B%E6%96%B9%E6%B3%95)
 
+## 操作符
+
+```js
+const obj = {}
+
+const test = obj.a?.b // undefined
+
+let val = null
+val = val ?? 'default' // default
+// 等同于
+val = (val === undefined || val === null) ? 'default' : val
+// 等同于
+val ??= 'default'
+
+// 同理还有`&&=`, `||=`, `??=`, `+=`， 等等
+
+// `?.`
+const obj2 = { a: { b: 1 } }
+const val2 = obj2.a?.b // 1
+
+// 函数调用
+const fn = val || (() => 2)
+const val3 = fn?.() // 2
+```
+
+- `??` 操作符，可以判断一个值是否为`null`或者`undefined`，如果是，则返回后面的值。
+- `?.` 可选链操作符，用来读取一个数据中的某一个属性，如果属性不存在，则返回`undefined`。也可以用来调用函数, 比如`fn?.()`，函数不存在，则返回`undefined`。
+
 ## promise
 
 - 建议精读文档:

@@ -5,7 +5,7 @@
 - 不要满屏的`any`, 遇到类型报错时，要勇于去修复
 - 在后端swagger文档类型和注释规范的前提下，前端可以自己写工具，自动生成typescript类型，起码减少3/2的代码量，我写过类型生成插件+api请求函数生成插件，请求函数也不用自己写了，前提是后端文档规范好。
 
-# as
+## as
 
 ```ts
 const a: number | string = 1
@@ -36,7 +36,7 @@ const id = obj.value?.id // number | undefined
 
 - 类型断言`!`, 可以将`undefined`转换为非`undefined`类型
 
-# 可选链`?`
+## 可选链`?`
 
 ```ts
 const obj = ref<{ id: 1 }>()
@@ -114,7 +114,7 @@ const item = {
 
 - 使用`@ts-ignore`可以忽略报错，但是类型可以自己修复的时候不建议使用
 
-# 泛型
+## 泛型
 
 ```ts
 import { ref } from 'vue'
@@ -261,3 +261,9 @@ export function useSwitchRequest<T, S extends SwitchFnList<T>>(
 
 - 在写hooks的时候，很有用, 可以用来推导函数传入参数的类型
 - 上面的request方法，可以传入一个请求函数，编辑器会自动推导其参数和返回值的类型
+
+## 进阶
+
+- [typescript-utility-types](https://www.typescriptlang.org/docs/handbook/utility-types.html)
+- [typescript教程](https://wangdoc.com/typescript/)
+- [type-challenges-类型体操](https://github.com/type-challenges/type-challenges)
