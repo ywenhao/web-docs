@@ -171,6 +171,23 @@ console.log(props.visible) // false
 - 父组件引用子组件时，`visible`带有`?`可选符，如果不给子组件传递`visible`，因为`visible`的类型是`boolean`,vue在底层做了转换，那么`props.visible`的值就是`false`
 - 尽量使用`props`传递数据，不要直接修改`props`， vue3.4之后可以使用`defineModel`，它的底层也是`props`结合 `emit`实现的，本质上算是`v-model`的语法糖,详见[defineModel](https://cn.vuejs.org/api/sfc-script-setup.html#usage-with-typescript)
 
+## defineModel
+
+```ts
+const visible = defineModel<boolean>('visible')
+
+// 等价于
+const props = defineProps<{ visible: boolean }>()
+const emit = defineEmits<{ (e: 'update:visible', value: boolean): void }>()
+
+const visible = computed({
+  get: () => props.visible,
+  set: value => emit('update:visible', value),
+})
+```
+
+- `defineModel`可以简化代码，一行相当于写了上面那一坨
+
 ```vue
 <script lang="ts" setup>
 const props = withDefaults(defineProps<{
