@@ -54,6 +54,10 @@ export default defineConfig({
           link: '/standard/vue3',
         },
         {
+          text: '包管理器',
+          link: '/standard/package',
+        },
+        {
           text: '编辑器',
           link: '/standard/idea',
         },
