@@ -21,7 +21,7 @@ export default defineConfig({
   },
   srcDir: './docs',
   themeConfig: {
-    logo: '/favicon.svg',
+    logo: '/static/favicon.svg',
 
     nav: [
       { text: '首页', link: '/' },
