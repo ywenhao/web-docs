@@ -21,13 +21,13 @@ export default defineConfig({
   },
   srcDir: './docs',
   themeConfig: {
-    logo: '/favicon.svg',
+    logo: '/static/favicon.svg',
 
     nav: [
       { text: '首页', link: '/' },
       { text: '开发规范', link: '/standard/naming-specification' },
       { text: '代码优化', link: '/optimization/code' },
-      { text: '学习指南', link: '/learn' },
+      { text: '学习指南', link: '/learn/method' },
     ],
 
     footer: {
@@ -54,6 +54,10 @@ export default defineConfig({
           link: '/standard/vue3',
         },
         {
+          text: '包管理器',
+          link: '/standard/package',
+        },
+        {
           text: '编辑器',
           link: '/standard/idea',
         },
@@ -78,6 +82,16 @@ export default defineConfig({
         {
           text: 'vue3',
           link: '/optimization/vue3',
+        },
+      ],
+      '/learn': [
+        {
+          text: '学习方法',
+          link: '/learn/method',
+        },
+        {
+          text: '提效技巧',
+          link: '/learn/accelerate-skill',
         },
       ],
     },
