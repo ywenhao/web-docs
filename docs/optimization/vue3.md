@@ -25,6 +25,7 @@ onMounted(() => {
 
 - 因为在vue里面ref是深层次的转换响应式，可能会破坏实例的数据结构，同时性能损坏会更多，而在这种应用场景下，这种转换是不必要的，应该避免
 - 需要使用shallowRef的有`echarts`、`mapbox`、`threejs`、`amap`等。
+- 如果是 options api 写法，就用`markRaw` 包一下
 
 ## 手动清除定时器
 
