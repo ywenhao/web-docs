@@ -129,3 +129,29 @@ defineExpose({ getUserId })
 ```
 
 - 可利用换行把代码分开，方便阅读
+
+## css
+
+```vue
+<style lang="scss" scoped>
+.demo {
+  color: red;
+}
+</style>
+```
+
+- `scoped`属性，可以让样式只作用于当前组件，避免全局污染和冲突。
+- 也可以使用`:deep()`选择器。
+
+### 需要不使用`scoped`，class 类名外包上一个 当前组件的类名，避免污染全局
+
+```vue
+// RoleList.vue
+<style lang="scss">
+.role-list {
+  .demo {
+    color: red;
+  }
+}
+</style>
+```
