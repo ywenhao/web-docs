@@ -237,6 +237,7 @@ function add() {
 
 - 用`ref`获取一个组件实例，需要修改组件实例里面的数据时，为了不破坏数据流向，应该在组件内部`defineExpose`暴露一个修改数据的函数，然后在父组件中调用该方法
 - 使用`InstanceType`和`typeof`组合来获取子组件的实例类型，可以获得相应的代码提示，包括子组件`defineExpose`暴露的方法和属性
+- vue3.5+之后可以用户`useTemplateRef`获取组件实例，结合volar可以自动推导组件类型，详见[useTemplateRef](https://cn.vuejs.org/api/composition-api-helpers.html#usetemplateref)
 
 ## 泛型
 
