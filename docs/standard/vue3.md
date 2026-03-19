@@ -284,8 +284,8 @@ function add(item: T) {
 ```vue
 <script setup lang="ts">
 import { ref } from 'vue'
-import Child from './Child.vue'
 import Child2 from './Child2.vue'
+import Child from './Child.vue'
 
 const data = ref()
 </script>
@@ -298,7 +298,7 @@ const data = ref()
 
 ### 数据流向
 
-<img src="/static/component-design-2.svg" />
+<img src="/static/component-design-2.svg" alt="" />
 
 - 父组件`data`传递给子组件，层级不深的用`props`传递，层级深的可以用用`provide/inject`传递，也可以使用`store`传递
 - **尽量不要在父组件里面通过`ref`直接调用子组件方法**，组件比较简单的时候能用，当组件复杂度上来后，会变得难以维护，数据流向混乱。

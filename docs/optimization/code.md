@@ -273,7 +273,7 @@ const test = obj.a?.b // undefined
 let val = null
 val = val ?? 'default' // default
 // 等同于
-val = (val === undefined || val === null) ? 'default' : val
+val = val ?? 'default'
 // 等同于
 val ??= 'default'
 

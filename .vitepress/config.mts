@@ -1,5 +1,5 @@
-import { defineConfig } from 'vitepress'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
+import { defineConfig } from 'vitepress'
 import viteConfig from './vite.config'
 
 export default defineConfig({

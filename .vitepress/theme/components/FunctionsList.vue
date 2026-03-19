@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import type { Ref } from 'vue'
-import { computed, toRef } from 'vue'
-import Fuse from 'fuse.js'
 import { useEventListener, useUrlSearchParams } from '@vueuse/core'
 import { categoryNames, functions } from '@vueuse/metadata'
+import Fuse from 'fuse.js'
+import { computed, toRef } from 'vue'
 
 const coreCategories = categoryNames.filter(i => !i.startsWith('@'))
 const addonCategories = categoryNames.filter(i => i.startsWith('@'))

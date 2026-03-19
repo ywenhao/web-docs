@@ -4,6 +4,7 @@ export default antfu(
   {
     formatters: true,
     ignores: [
+      'dist',
       'patches',
       'playgrounds',
       '**/types',
@@ -53,12 +54,18 @@ export default antfu(
       'ts/no-unused-vars': 'off',
       'ts/no-redeclare': 'off',
       'unused-imports/no-unused-vars': 'off',
+      'markdown/require-alt-text': 'off',
     },
   },
   {
     files: ['packages/.vitepress/**/*.vue', 'playgrounds/**/*.vue'],
     rules: {
       'no-restricted-imports': 'off',
+    },
+  },
+  {
+    rules: {
+      'e18e/prefer-static-regex': 'off',
     },
   },
 )

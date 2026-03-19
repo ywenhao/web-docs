@@ -386,12 +386,12 @@
 
 ### step1
 
-<img src="/static/webstorm1.png" />
+<img src="/static/webstorm1.png" alt="" />
 
 ### step2
 
-<img src="/static/webstorm2.png" />
+<img src="/static/webstorm2.png"  alt="" />
 
 ### step3
 
-<img src="/static/webstorm3.png" />
+<img src="/static/webstorm3.png"  alt="" />

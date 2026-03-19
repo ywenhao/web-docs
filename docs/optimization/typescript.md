@@ -101,7 +101,9 @@ type A<T> = T extends true ? 1 : never
 - 配合`never`，可以写出一些类型检查的函数
 - `never`在[类型体操](https://github.com/type-challenges/type-challenges)中，可以用来表示没有。ts类型中没有`a || b` 和 `a && b`语法，但是可以用`never`来模拟。
 
-# @ts-ignore/@ts-expect-error
+```
+@ts-ignore/@ts-expect-error
+```
 
 ```ts
 const item = {
@@ -128,7 +130,8 @@ function getList<T>(list: T[]): T {
 // request hooks
 
 ```ts
-import { type Ref, computed, reactive, ref, watch } from 'vue'
+import type { Ref } from 'vue'
+import { computed, reactive, ref, watch } from 'vue'
 
 type GetDataByRequest<T> = T extends (...args: any[]) => Promise<infer R>
   ? R extends { list?: infer D }
@@ -136,9 +139,9 @@ type GetDataByRequest<T> = T extends (...args: any[]) => Promise<infer R>
     : never
   : never
 
-type RunParams<T extends PromiseFn, P> =
-  | (Parameters<T>[number] & Partial<P>)
-  | Parameters<T>[number]
+type RunParams<T extends PromiseFn, P>
+  = | (Parameters<T>[number] & Partial<P>)
+    | Parameters<T>[number]
 
 type PromiseFn = (...args: any[]) => Promise<any>
 
