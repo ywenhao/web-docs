@@ -1,4 +1,4 @@
-// / <reference types="vite/client" />
+/// <reference types="vite/client" />
 
 declare module 'virtual:pwa-register/vue' {
   import type { Ref } from 'vue'

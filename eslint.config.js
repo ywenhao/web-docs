@@ -64,6 +64,12 @@ export default antfu(
     },
   },
   {
+    files: ['**/*.d.ts'],
+    rules: {
+      'spaced-comment': ['error', 'always', { exceptions: ['#__PURE__'], markers: ['/'] }],
+    },
+  },
+  {
     rules: {
       'e18e/prefer-static-regex': 'off',
     },
