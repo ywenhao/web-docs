@@ -1,6 +1,9 @@
+import type { UserConfig } from 'vitepress'
 import { transformerTwoslash } from '@shikijs/vitepress-twoslash'
 import { defineConfig } from 'vitepress'
 import viteConfig from './vite.config'
+
+const compatibleViteConfig = viteConfig as unknown as NonNullable<UserConfig['vite']>
 
 export default defineConfig({
   title: '前端开发指南',
@@ -9,7 +12,7 @@ export default defineConfig({
   ignoreDeadLinks: true,
   markdown: {
     theme: {
-      light: 'github-dark',
+      light: 'github-light',
       dark: 'github-dark',
     },
     codeTransformers: [
@@ -121,5 +124,5 @@ export default defineConfig({
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap' }],
     ['link', { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Fira+Code&display=swap' }],
   ],
-  vite: viteConfig,
+  vite: compatibleViteConfig,
 })

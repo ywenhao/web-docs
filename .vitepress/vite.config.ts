@@ -6,6 +6,20 @@ import Components from 'unplugin-vue-components/vite'
 import { defineConfig } from 'vite'
 
 export default defineConfig({
+  build: {
+    rollupOptions: {
+      onwarn(warning, warn) {
+        if (
+          warning.code === 'INVALID_ANNOTATION'
+          && warning.id?.includes('@vueuse/core')
+        ) {
+          return
+        }
+
+        warn(warning)
+      },
+    },
+  },
   plugins: [
     Components({
       dirs: resolve(__dirname, 'theme/components'),

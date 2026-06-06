@@ -18,6 +18,6 @@
     "skipDefaultLibCheck": true,
     "skipLibCheck": true
   },
-  "include": ["*.ts", ".vitepress/components/*.vue", ".vitepress/*.ts", ".vitepress/*.mts", "meta"],
+  "include": ["*.ts", ".vitepress/**/*.ts", ".vitepress/**/*.mts", ".vitepress/**/*.vue", "meta"],
   "exclude": ["unocss.config.ts", "node_modules", "**/*.md", "**/dist"]
 }
