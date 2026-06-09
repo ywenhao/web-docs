@@ -1,8 +1,17 @@
 {
-  "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "web-docs",
-  "compatibility_date": "2026-01-23",
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "web-guide",
+  // TanStack Start's server entry — provided by @tanstack/react-start.
+  "main": "@tanstack/react-start/server-entry",
+  "compatibility_date": "2026-06-03",
+  // Required so the Worker can use Node.js built-ins that TanStack Start relies on.
+  "compatibility_flags": ["nodejs_compat"],
+  // Serve the built client assets and fall back to the Worker for SSR/API routes.
   "assets": {
-    "directory": "./.vitepress/dist"
-  }
+    "directory": "./dist/client",
+    "binding": "ASSETS",
+  },
+  "observability": {
+    "enabled": true,
+  },
 }

@@ -1,0 +1,62 @@
+{
+  // Requires the "Oxc" Zed extension (zed.dev/extensions/oxc) for oxlint
+  // diagnostics. Formatting uses the project-local oxfmt binary that ships
+  // with vite-plus, via stdin.
+  "formatter": {
+    "external": {
+      "command": "node_modules/.bin/oxfmt",
+      "arguments": ["--stdin-filepath", "{buffer_path}"]
+    }
+  },
+  "format_on_save": "on",
+  "languages": {
+    "TypeScript": {
+      "language_servers": ["oxc", "..."],
+      "formatter": {
+        "external": {
+          "command": "node_modules/.bin/oxfmt",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "code_actions_on_format": {
+        "source.fixAll.oxc": true
+      }
+    },
+    "TSX": {
+      "language_servers": ["oxc", "..."],
+      "formatter": {
+        "external": {
+          "command": "node_modules/.bin/oxfmt",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "code_actions_on_format": {
+        "source.fixAll.oxc": true
+      }
+    },
+    "JavaScript": {
+      "language_servers": ["oxc", "..."],
+      "formatter": {
+        "external": {
+          "command": "node_modules/.bin/oxfmt",
+          "arguments": ["--stdin-filepath", "{buffer_path}"]
+        }
+      },
+      "code_actions_on_format": {
+        "source.fixAll.oxc": true
+      }
+    }
+  },
+  "file_scan_exclusions": [
+    "**/.git",
+    "**/node_modules",
+    "**/dist",
+    "**/.output",
+    "**/.nitro",
+    "**/.tanstack",
+    "**/routeTree.gen.ts"
+  ],
+  "tab_size": 2,
+  "ensure_final_newline_on_save": true,
+  "remove_trailing_whitespace_on_save": true
+}

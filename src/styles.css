@@ -1,0 +1,156 @@
+@import "tailwindcss";
+@plugin "@tailwindcss/typography";
+
+/* Tailwind v4: enable class-based dark mode (toggled on <html class="dark">). */
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --brand: #3451b2;
+  --brand-light: #5672cd;
+}
+
+.dark {
+  --brand: #a8b1ff;
+  --brand-light: #5c73e7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#app {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+/* Offset anchored headings so they aren't hidden under the sticky header. */
+:target {
+  scroll-margin-top: 5rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Shiki dual-theme: the highlighter emits both light and dark colors as CSS
+   variables. Swap which one is active based on the `.dark` class.
+--------------------------------------------------------------------------- */
+.shiki,
+.shiki span {
+  color: var(--shiki-light);
+  background-color: var(--shiki-light-bg);
+}
+
+.dark .shiki,
+.dark .shiki span {
+  color: var(--shiki-dark);
+  background-color: var(--shiki-dark-bg);
+}
+
+/* Code blocks inside prose: reset the default prose pre styling so Shiki's
+   background and our padding take over. */
+.prose pre.shiki {
+  padding: 1rem 1.25rem;
+  border-radius: 0.5rem;
+  overflow-x: auto;
+  border: 1px solid rgb(0 0 0 / 0.06);
+  line-height: 1.6;
+}
+
+.dark .prose pre.shiki {
+  border-color: rgb(255 255 255 / 0.08);
+}
+
+.prose pre.shiki code {
+  display: grid; /* one row per line, enables full-width line backgrounds */
+  background: transparent;
+  font-size: 0.875rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Diff / highlight / focus line markers (from @shikijs/transformers).
+--------------------------------------------------------------------------- */
+.prose pre.shiki .line {
+  display: inline-block;
+  width: 100%;
+  padding: 0 1.25rem;
+  margin: 0 -1.25rem;
+}
+
+.prose pre.shiki .line.diff.add {
+  background-color: rgb(16 185 129 / 0.14);
+}
+.prose pre.shiki .line.diff.add::before {
+  content: "+";
+  position: absolute;
+  left: 0.4rem;
+  color: rgb(16 185 129);
+}
+.prose pre.shiki .line.diff.remove {
+  background-color: rgb(244 63 94 / 0.14);
+  opacity: 0.75;
+}
+.prose pre.shiki .line.diff.remove::before {
+  content: "-";
+  position: absolute;
+  left: 0.4rem;
+  color: rgb(244 63 94);
+}
+.prose pre.shiki:has(.diff) code {
+  /* room for the +/- gutter glyphs */
+  padding-left: 0.5rem;
+}
+.prose pre.shiki .line {
+  position: relative;
+}
+
+.prose pre.shiki .line.highlighted {
+  background-color: rgb(101 117 133 / 0.16);
+}
+
+.prose pre.shiki:has(.focused) .line:not(.focused) {
+  filter: blur(0.085rem);
+  opacity: 0.6;
+  transition:
+    filter 0.2s,
+    opacity 0.2s;
+}
+.prose pre.shiki:has(.focused):hover .line:not(.focused) {
+  filter: none;
+  opacity: 1;
+}
+
+/* Inline code in prose: subtle chip, not Shiki-managed. */
+.prose :not(pre) > code {
+  background-color: rgb(101 117 133 / 0.12);
+  padding: 0.15em 0.4em;
+  border-radius: 0.35rem;
+  font-weight: 500;
+  font-size: 0.875em;
+}
+.prose :not(pre) > code::before,
+.prose :not(pre) > code::after {
+  content: none; /* drop prose's backtick pseudo-content */
+}
+
+/* Heading anchor links injected by markdown-it-anchor. */
+.prose .header-anchor {
+  float: left;
+  margin-left: -1.1em;
+  padding-right: 0.4em;
+  opacity: 0;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+.prose h1:hover .header-anchor,
+.prose h2:hover .header-anchor,
+.prose h3:hover .header-anchor,
+.prose h4:hover .header-anchor {
+  opacity: 0.5;
+}

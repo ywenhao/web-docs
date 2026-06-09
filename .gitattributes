@@ -1,1 +1,45 @@
+# Normalize line endings: enforce LF in the repo, auto-convert on checkout.
 * text=auto eol=lf
+
+# Explicitly treat these as text with LF.
+*.ts      text eol=lf
+*.tsx     text eol=lf
+*.js      text eol=lf
+*.jsx     text eol=lf
+*.mjs     text eol=lf
+*.cjs     text eol=lf
+*.json    text eol=lf
+*.jsonc   text eol=lf
+*.css     text eol=lf
+*.html    text eol=lf
+*.md      text eol=lf
+*.yml     text eol=lf
+*.yaml    text eol=lf
+*.svg     text eol=lf
+
+# Shell scripts and git hooks must stay LF even on Windows.
+*.sh      text eol=lf
+.vite-hooks/** text eol=lf
+
+# Windows scripts keep CRLF.
+*.cmd     text eol=crlf
+*.bat     text eol=crlf
+*.ps1     text eol=crlf
+
+# Binary files — never normalize or diff as text.
+*.png     binary
+*.jpg     binary
+*.jpeg    binary
+*.gif     binary
+*.ico     binary
+*.webp    binary
+*.avif    binary
+*.woff    binary
+*.woff2   binary
+*.ttf     binary
+*.eot     binary
+*.pdf     binary
+
+# Generated files: collapse in diffs and mark as generated on GitHub.
+pnpm-lock.yaml        linguist-generated=true -diff
+src/routeTree.gen.ts  linguist-generated=true -diff

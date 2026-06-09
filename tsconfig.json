@@ -1,25 +1,28 @@
 {
+  "include": ["**/*.ts", "**/*.tsx", "types/**/*.ts"],
   "compilerOptions": {
-    "tsBuildInfoFile": "./node_modules/.tmp/tsconfig.app.tsbuildinfo",
-    "target": "es2020",
-    "jsx": "preserve",
-    "lib": ["ESNext", "DOM", "DOM.Iterable", "webworker"],
-    "rootDir": ".",
-    "module": "esnext",
-    "moduleResolution": "Bundler",
-    "paths": {},
-    "resolveJsonModule": true,
-    "strict": true,
-    "strictFunctionTypes": true,
-    "strictNullChecks": true,
-    "noUnusedLocals": true,
-    "declaration": true,
-    "declarationDir": "./types",
+    "target": "ES2022",
+    "jsx": "react-jsx",
+    "module": "ESNext",
+    "paths": {
+      "#/*": ["./types/*"],
+      "@/*": ["./src/*"]
+    },
+    "lib": ["ES2022", "DOM", "DOM.Iterable"],
+    "types": ["vite/client", "vite-plus/test/globals", "@testing-library/jest-dom"],
+
+    /* Bundler mode */
+    "moduleResolution": "bundler",
+    "allowImportingTsExtensions": true,
+    "verbatimModuleSyntax": true,
     "noEmit": true,
-    "esModuleInterop": true,
-    "skipDefaultLibCheck": true,
-    "skipLibCheck": true
-  },
-  "include": ["*.ts", ".vitepress/**/*.ts", ".vitepress/**/*.mts", ".vitepress/**/*.vue", "meta"],
-  "exclude": ["unocss.config.ts", "node_modules", "**/*.md", "**/dist"]
+
+    /* Linting */
+    "skipLibCheck": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noFallthroughCasesInSwitch": true,
+    "noUncheckedSideEffectImports": true
+  }
 }
