@@ -38,8 +38,8 @@ html {
 }
 
 /* ---------------------------------------------------------------------------
-   Shiki dual-theme: the highlighter emits both light and dark colors as CSS
-   variables. Swap which one is active based on the `.dark` class.
+   Shiki code blocks: One Dark Pro is emitted into both light and dark CSS
+   variables so code samples keep the same editor-like theme in every mode.
 --------------------------------------------------------------------------- */
 .shiki,
 .shiki span {
@@ -59,12 +59,14 @@ html {
   padding: 1rem 1.25rem;
   border-radius: 0.5rem;
   overflow-x: auto;
-  border: 1px solid rgb(0 0 0 / 0.06);
+  border: 1px solid rgb(255 255 255 / 0.08);
   line-height: 1.6;
+  box-shadow: 0 1px 2px rgb(15 23 42 / 0.08);
 }
 
 .dark .prose pre.shiki {
   border-color: rgb(255 255 255 / 0.08);
+  box-shadow: none;
 }
 
 .prose pre.shiki code {

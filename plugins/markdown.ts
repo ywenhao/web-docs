@@ -28,8 +28,7 @@ import { createHighlighter } from "shiki";
 
 import type { TocItem } from "../types/docs";
 
-const LIGHT_THEME = "vitesse-light";
-const DARK_THEME = "vitesse-dark";
+const CODE_THEME = "one-dark-pro";
 
 // Languages used across the docs. Keep in sync with code fences in `docs/`.
 const LANGS = [
@@ -58,7 +57,7 @@ async function getMarkdown(): Promise<MarkdownIt> {
   if (!mdPromise) {
     mdPromise = (async () => {
       const highlighter = await createHighlighter({
-        themes: [LIGHT_THEME, DARK_THEME],
+        themes: [CODE_THEME],
         langs: LANGS,
       });
 
@@ -66,7 +65,7 @@ async function getMarkdown(): Promise<MarkdownIt> {
 
       md.use(
         fromHighlighter(highlighter, {
-          themes: { light: LIGHT_THEME, dark: DARK_THEME },
+          themes: { light: CODE_THEME, dark: CODE_THEME },
           defaultColor: false,
           transformers: [
             // `// [!code ++]` / `// [!code --]` → diff add/remove lines.
