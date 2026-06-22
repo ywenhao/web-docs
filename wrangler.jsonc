@@ -1,6 +1,6 @@
 {
   "$schema": "node_modules/wrangler/config-schema.json",
-  "name": "web-guide",
+  "name": "web-docs",
   // TanStack Start's server entry — provided by @tanstack/react-start.
   "main": "@tanstack/react-start/server-entry",
   "compatibility_date": "2026-06-03",
