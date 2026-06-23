@@ -2,7 +2,8 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { useNavigate } from "@tanstack/react-router";
 import Fuse from "fuse.js";
 import { FileText, Search } from "lucide-react";
-import { searchIndex, sectionLabel } from "@/lib/docs";
+import { sectionLabel } from "@/lib/doc-nav";
+import { searchIndex } from "@/lib/docs";
 import type { SearchDoc } from "#/docs";
 
 interface SearchModalProps {

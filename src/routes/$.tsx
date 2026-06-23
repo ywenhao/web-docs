@@ -1,6 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { DocPage } from "@/components/doc-page";
-import { getDoc } from "@/lib/docs";
 import { seo } from "@/lib/seo";
 import { absoluteUrl, siteConfig } from "@/lib/site";
 
@@ -9,7 +8,8 @@ import { absoluteUrl, siteConfig } from "@/lib/site";
  * the doc registry (`@/lib/docs`). Unknown paths 404.
  */
 export const Route = createFileRoute("/$")({
-  loader: ({ params }) => {
+  loader: async ({ params }) => {
+    const { getDoc } = await import("@/lib/docs");
     const doc = getDoc(`/${params._splat ?? ""}`);
     if (!doc) throw notFound();
     return {

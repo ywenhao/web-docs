@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Github, Menu, Moon, Search, Sun } from "lucide-react";
+import { navLinks } from "@/lib/doc-nav";
 import { siteConfig } from "@/lib/site";
-import { navLinks } from "@/lib/docs";
 import { useTheme } from "@/lib/use-theme";
 
 interface HeaderProps {

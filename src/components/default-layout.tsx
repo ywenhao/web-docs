@@ -1,8 +1,11 @@
-import { useEffect, useState } from "react";
+import { Suspense, lazy, useEffect, useState } from "react";
 import type { ReactNode } from "react";
 import { Header } from "@/components/header";
-import { SearchModal } from "@/components/search";
 import { siteConfig } from "@/lib/site";
+
+const SearchModal = lazy(() =>
+  import("@/components/search").then((module) => ({ default: module.SearchModal })),
+);
 
 /**
  * App-wide chrome: glassy header (with the global ⌘K search) and footer,
@@ -37,7 +40,11 @@ export function DefaultLayout({ children }: { children: ReactNode }) {
         </div>
       </footer>
 
-      <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+      {searchOpen ? (
+        <Suspense fallback={null}>
+          <SearchModal open={searchOpen} onClose={() => setSearchOpen(false)} />
+        </Suspense>
+      ) : null}
     </div>
   );
 }
