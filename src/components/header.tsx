@@ -1,6 +1,6 @@
-import { Link } from "@tanstack/react-router";
+import { Link, useLocation } from "@tanstack/react-router";
 import { Github, Menu, Moon, Search, Sun } from "lucide-react";
-import { navLinks } from "@/lib/doc-nav";
+import { activeNavKeyFromPath, navLinks } from "@/lib/doc-nav";
 import { siteConfig } from "@/lib/site";
 import { useTheme } from "@/lib/use-theme";
 
@@ -15,6 +15,8 @@ interface HeaderProps {
  */
 export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
   const { theme, toggle } = useTheme();
+  const { pathname } = useLocation();
+  const activeNavKey = activeNavKeyFromPath(pathname);
 
   return (
     <header className="sticky top-3 z-40 px-3 sm:px-4">
@@ -41,7 +43,12 @@ export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
               key={link.path}
               to="/$"
               params={{ _splat: link.path.replace(/^\//, "") }}
-              className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-white/55 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+              aria-current={activeNavKey === link.key ? "page" : undefined}
+              className={
+                activeNavKey === link.key
+                  ? "rounded-lg border border-white/65 bg-white/60 px-3 py-2 text-sm font-semibold text-sky-700 shadow-sm shadow-sky-500/10 transition-colors dark:border-white/10 dark:bg-white/10 dark:text-sky-200"
+                  : "rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-white/55 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
+              }
             >
               {link.text}
             </Link>

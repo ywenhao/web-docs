@@ -30,11 +30,17 @@ export const SECTION_ORDER: { key: string; text: string; order: string[] }[] = [
 ];
 
 /** Top nav links — first item of each section, mirroring the old VitePress nav. */
-export const navLinks: { text: string; path: string }[] = [
-  { text: "开发规范", path: "/standard/naming-specification" },
-  { text: "代码优化", path: "/optimization/code" },
-  { text: "学习指南", path: "/learn/method" },
+export const navLinks: { key: string; text: string; path: string }[] = [
+  { key: "standard", text: "开发规范", path: "/standard/naming-specification" },
+  { key: "optimization", text: "代码优化", path: "/optimization/code" },
+  { key: "learn", text: "学习指南", path: "/learn/method" },
 ];
+
+/** Resolve the active top-nav section from a route pathname. */
+export function activeNavKeyFromPath(pathname: string): string | undefined {
+  const section = pathname.split("/").filter(Boolean)[0];
+  return SECTION_ORDER.some((item) => item.key === section) ? section : undefined;
+}
 
 /** Find the section label for a given section key. */
 export function sectionLabel(key: string): string {
