@@ -37,8 +37,8 @@ export function DocToc({ toc }: { toc: TocItem[] }) {
 
   return (
     <nav className="text-sm">
-      <p className="mb-3 font-semibold text-gray-900 dark:text-gray-100">本页目录</p>
-      <ul className="flex flex-col gap-2 border-l border-gray-200 dark:border-gray-800">
+      <p className="mb-3 font-semibold text-slate-950 dark:text-slate-100">本页目录</p>
+      <ul className="flex flex-col gap-2 border-l border-white/60 dark:border-white/10">
         {toc.map((item) => {
           const active = activeSlug === item.slug;
           return (
@@ -47,8 +47,8 @@ export function DocToc({ toc }: { toc: TocItem[] }) {
                 href={`#${item.slug}`}
                 className={
                   active
-                    ? "-ml-px block border-l-2 border-indigo-500 pl-3 text-indigo-600 dark:text-indigo-300"
-                    : "-ml-px block border-l-2 border-transparent pl-3 text-gray-500 transition-colors hover:text-gray-900 dark:text-gray-400 dark:hover:text-gray-100"
+                    ? "-ml-px block border-l-2 border-sky-500 pl-3 text-sky-700 dark:text-sky-200"
+                    : "-ml-px block border-l-2 border-transparent pl-3 text-slate-500 transition-colors hover:text-slate-950 dark:text-slate-400 dark:hover:text-slate-100"
                 }
               >
                 {item.text}

@@ -7,11 +7,29 @@
 :root {
   --brand: #3451b2;
   --brand-light: #5672cd;
+  --liquid-ink: #172033;
+  --liquid-muted: #64748b;
+  --liquid-panel: rgb(255 255 255 / 0.62);
+  --liquid-panel-strong: rgb(255 255 255 / 0.78);
+  --liquid-line: rgb(255 255 255 / 0.7);
+  --liquid-shadow: 0 18px 55px rgb(30 41 59 / 0.14);
+  --liquid-inner: inset 0 1px 0 rgb(255 255 255 / 0.78);
+  --liquid-blue: #2997ff;
+  --liquid-mint: #34c759;
+  --liquid-pink: #ff5ea8;
+  --liquid-amber: #ffd166;
 }
 
 .dark {
   --brand: #a8b1ff;
   --brand-light: #5c73e7;
+  --liquid-ink: #f8fafc;
+  --liquid-muted: #94a3b8;
+  --liquid-panel: rgb(15 23 42 / 0.58);
+  --liquid-panel-strong: rgb(15 23 42 / 0.76);
+  --liquid-line: rgb(255 255 255 / 0.13);
+  --liquid-shadow: 0 24px 70px rgb(0 0 0 / 0.42);
+  --liquid-inner: inset 0 1px 0 rgb(255 255 255 / 0.1);
 }
 
 * {
@@ -26,6 +44,10 @@ body,
 
 body {
   margin: 0;
+  background: #f6f8fc;
+  color: var(--liquid-ink);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
 }
 
 html {
@@ -35,6 +57,164 @@ html {
 /* Offset anchored headings so they aren't hidden under the sticky header. */
 :target {
   scroll-margin-top: 5rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Liquid glass theme utilities: translucent surfaces, refracted color washes,
+   and restrained Apple-like highlights shared across app chrome.
+--------------------------------------------------------------------------- */
+.liquid-shell {
+  position: relative;
+  isolation: isolate;
+  min-height: 100vh;
+  overflow: hidden;
+  background:
+    linear-gradient(120deg, rgb(41 151 255 / 0.13), transparent 34%),
+    linear-gradient(240deg, rgb(52 199 89 / 0.13), transparent 38%),
+    linear-gradient(180deg, #fbfdff 0%, #eef5ff 44%, #fbf7ff 100%);
+}
+
+.dark .liquid-shell {
+  background:
+    linear-gradient(125deg, rgb(41 151 255 / 0.18), transparent 36%),
+    linear-gradient(245deg, rgb(255 94 168 / 0.13), transparent 42%),
+    linear-gradient(180deg, #05070b 0%, #101827 48%, #070b13 100%);
+}
+
+.liquid-shell::before,
+.liquid-shell::after {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  content: "";
+}
+
+.liquid-shell::before {
+  background:
+    conic-gradient(
+      from 210deg at 50% 18%,
+      rgb(41 151 255 / 0.16),
+      rgb(255 255 255 / 0),
+      rgb(255 94 168 / 0.12),
+      rgb(52 199 89 / 0.1),
+      rgb(41 151 255 / 0.16)
+    ),
+    linear-gradient(90deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0));
+  filter: blur(28px) saturate(1.18);
+  opacity: 0.75;
+  transform: translate3d(0, 0, 0);
+}
+
+.dark .liquid-shell::before {
+  background:
+    conic-gradient(
+      from 210deg at 50% 18%,
+      rgb(41 151 255 / 0.2),
+      rgb(255 255 255 / 0),
+      rgb(255 94 168 / 0.13),
+      rgb(52 199 89 / 0.11),
+      rgb(41 151 255 / 0.2)
+    ),
+    linear-gradient(90deg, rgb(15 23 42 / 0.48), rgb(15 23 42 / 0));
+  opacity: 0.7;
+}
+
+.liquid-shell::after {
+  background-image:
+    linear-gradient(rgb(255 255 255 / 0.18) 1px, transparent 1px),
+    linear-gradient(90deg, rgb(255 255 255 / 0.12) 1px, transparent 1px);
+  background-size: 64px 64px;
+  mask-image: linear-gradient(to bottom, transparent 0%, black 18%, transparent 100%);
+  opacity: 0.32;
+}
+
+.glass-surface {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 0.72), rgb(255 255 255 / 0.42)), var(--liquid-panel);
+  border: 1px solid var(--liquid-line);
+  box-shadow: var(--liquid-shadow), var(--liquid-inner);
+  backdrop-filter: blur(24px) saturate(1.55);
+  -webkit-backdrop-filter: blur(24px) saturate(1.55);
+}
+
+.dark .glass-surface {
+  background:
+    linear-gradient(135deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.03)), var(--liquid-panel);
+}
+
+.glass-surface::before {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  content: "";
+  background:
+    linear-gradient(120deg, rgb(255 255 255 / 0.6), transparent 24%),
+    linear-gradient(280deg, rgb(41 151 255 / 0.12), transparent 34%),
+    linear-gradient(30deg, transparent 62%, rgb(255 94 168 / 0.1));
+  opacity: 0.7;
+}
+
+.dark .glass-surface::before {
+  background:
+    linear-gradient(120deg, rgb(255 255 255 / 0.12), transparent 24%),
+    linear-gradient(280deg, rgb(41 151 255 / 0.14), transparent 34%),
+    linear-gradient(30deg, transparent 62%, rgb(255 94 168 / 0.12));
+  opacity: 0.72;
+}
+
+.glass-surface > * {
+  position: relative;
+  z-index: 1;
+}
+
+.glass-control {
+  border: 1px solid rgb(255 255 255 / 0.65);
+  background: rgb(255 255 255 / 0.48);
+  box-shadow:
+    0 8px 24px rgb(15 23 42 / 0.08),
+    inset 0 1px 0 rgb(255 255 255 / 0.62);
+  backdrop-filter: blur(18px) saturate(1.45);
+  -webkit-backdrop-filter: blur(18px) saturate(1.45);
+}
+
+.glass-control:hover {
+  background: rgb(255 255 255 / 0.68);
+  border-color: rgb(255 255 255 / 0.86);
+}
+
+.dark .glass-control {
+  border-color: rgb(255 255 255 / 0.12);
+  background: rgb(15 23 42 / 0.46);
+  box-shadow:
+    0 10px 30px rgb(0 0 0 / 0.28),
+    inset 0 1px 0 rgb(255 255 255 / 0.08);
+}
+
+.dark .glass-control:hover {
+  background: rgb(30 41 59 / 0.66);
+  border-color: rgb(255 255 255 / 0.18);
+}
+
+.liquid-text {
+  color: var(--liquid-ink);
+}
+
+.liquid-muted {
+  color: var(--liquid-muted);
+}
+
+.liquid-gradient-text {
+  background: linear-gradient(90deg, #111827, var(--liquid-blue), #7c3aed, #db2777);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.dark .liquid-gradient-text {
+  background-image: linear-gradient(90deg, #f8fafc, #93c5fd, #a7f3d0, #f0abfc);
 }
 
 /* ---------------------------------------------------------------------------

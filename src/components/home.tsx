@@ -30,31 +30,21 @@ const features = [
 export function Home() {
   return (
     <div className="relative overflow-hidden">
-      {/* Decorative gradient backdrop */}
-      <div
-        aria-hidden
-        className="pointer-events-none absolute inset-x-0 -top-40 -z-10 transform-gpu blur-3xl"
-      >
-        <div className="mx-auto aspect-[1155/678] w-[72rem] bg-gradient-to-tr from-indigo-400 to-violet-400 opacity-20 dark:opacity-10" />
-      </div>
-
       {/* Hero */}
-      <section className="mx-auto max-w-5xl px-6 py-24 text-center sm:py-32">
-        <span className="mb-6 inline-flex items-center gap-2 rounded-full border border-gray-200 px-4 py-1.5 text-sm text-gray-600 dark:border-gray-800 dark:text-gray-300">
-          <Sparkles className="size-4 text-indigo-500" />
+      <section className="mx-auto max-w-5xl px-6 py-20 text-center sm:py-28">
+        <span className="glass-control liquid-muted mb-6 inline-flex items-center gap-2 rounded-lg px-4 py-1.5 text-sm">
+          <Sparkles className="size-4 text-sky-500" />
           Vue3 前端开发实践
         </span>
-        <h1 className="bg-gradient-to-br from-gray-900 via-indigo-700 to-violet-600 bg-clip-text text-5xl font-extrabold tracking-tight text-transparent sm:text-6xl dark:from-white dark:via-indigo-300 dark:to-violet-300">
+        <h1 className="liquid-gradient-text text-5xl font-extrabold sm:text-6xl">
           {siteConfig.name}
         </h1>
-        <p className="mx-auto mt-6 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-          {siteConfig.description}
-        </p>
+        <p className="liquid-muted mx-auto mt-6 max-w-2xl text-lg">{siteConfig.description}</p>
         <div className="mt-10 flex items-center justify-center gap-4">
           <Link
             to="/$"
             params={{ _splat: "standard/naming-specification" }}
-            className="inline-flex items-center gap-2 rounded-lg bg-indigo-600 px-6 py-3 font-medium text-white shadow-lg shadow-indigo-500/25 transition-colors hover:bg-indigo-500"
+            className="inline-flex items-center gap-2 rounded-lg bg-slate-950 px-6 py-3 font-medium text-white shadow-lg shadow-sky-500/20 transition-colors hover:bg-slate-800 dark:bg-white dark:text-slate-950 dark:hover:bg-slate-200"
           >
             前端开发规范
             <ArrowRight className="size-4" />
@@ -62,7 +52,7 @@ export function Home() {
           <Link
             to="/$"
             params={{ _splat: "optimization/code" }}
-            className="inline-flex items-center gap-2 rounded-lg border border-gray-300 px-6 py-3 font-medium text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-700 dark:text-gray-200 dark:hover:bg-gray-800"
+            className="glass-control inline-flex items-center gap-2 rounded-lg px-6 py-3 font-medium text-slate-700 transition-colors hover:text-slate-950 dark:text-slate-200 dark:hover:text-white"
           >
             代码优化
           </Link>
@@ -77,16 +67,16 @@ export function Home() {
               key={f.title}
               to="/$"
               params={{ _splat: f.to }}
-              className="group rounded-2xl border border-gray-200 bg-white p-6 transition-all hover:-translate-y-1 hover:border-indigo-300 hover:shadow-xl dark:border-gray-800 dark:bg-gray-900 dark:hover:border-indigo-700"
+              className="glass-surface group rounded-lg p-6 transition-transform hover:-translate-y-1"
             >
-              <div className="mb-4 inline-flex rounded-xl bg-indigo-50 p-3 text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-300">
+              <div className="glass-control mb-4 inline-flex rounded-lg p-3 text-sky-600 dark:text-sky-300">
                 <f.icon className="size-6" />
               </div>
-              <h3 className="mb-2 flex items-center gap-1 text-lg font-semibold text-gray-900 dark:text-gray-100">
+              <h3 className="liquid-text mb-2 flex items-center gap-1 text-lg font-semibold dark:text-slate-100">
                 {f.title}
                 <ArrowRight className="size-4 opacity-0 transition-opacity group-hover:opacity-100" />
               </h3>
-              <p className="text-sm text-gray-600 dark:text-gray-400">{f.desc}</p>
+              <p className="liquid-muted text-sm">{f.desc}</p>
             </Link>
           ))}
         </div>

@@ -12,7 +12,7 @@ export function DocSidebar({ onNavigate }: { onNavigate?: () => void }) {
     <nav className="flex flex-col gap-7">
       {sidebar.map((section) => (
         <div key={section.key}>
-          <p className="mb-2 px-3 text-sm font-semibold text-gray-900 dark:text-gray-100">
+          <p className="mb-2 px-3 text-sm font-semibold text-slate-950 dark:text-slate-100">
             {section.text}
           </p>
           <ul className="flex flex-col gap-0.5">
@@ -26,8 +26,8 @@ export function DocSidebar({ onNavigate }: { onNavigate?: () => void }) {
                     onClick={onNavigate}
                     className={
                       active
-                        ? "block rounded-md border-l-2 border-indigo-500 bg-indigo-50 px-3 py-1.5 text-sm font-medium text-indigo-600 dark:bg-indigo-500/10 dark:text-indigo-300"
-                        : "block rounded-md px-3 py-1.5 text-sm text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-400 dark:hover:bg-gray-800 dark:hover:text-gray-100"
+                        ? "block rounded-lg border-l-2 border-sky-500 bg-white/55 px-3 py-1.5 text-sm font-medium text-sky-700 shadow-sm dark:bg-white/10 dark:text-sky-200"
+                        : "block rounded-lg px-3 py-1.5 text-sm text-slate-600 transition-colors hover:bg-white/45 hover:text-slate-950 dark:text-slate-400 dark:hover:bg-white/10 dark:hover:text-slate-100"
                     }
                   >
                     {item.text}

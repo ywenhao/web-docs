@@ -17,13 +17,13 @@ export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
   const { theme, toggle } = useTheme();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-gray-200/70 bg-white/80 backdrop-blur-md dark:border-gray-800/70 dark:bg-gray-950/80">
-      <div className="mx-auto flex h-16 max-w-7xl items-center gap-4 px-4 sm:px-6">
+    <header className="sticky top-3 z-40 px-3 sm:px-4">
+      <div className="glass-surface mx-auto flex h-16 max-w-7xl items-center gap-4 rounded-lg px-4 sm:px-6">
         {onOpenSidebar ? (
           <button
             type="button"
             onClick={onOpenSidebar}
-            className="rounded-md p-2 text-gray-500 hover:bg-gray-100 lg:hidden dark:hover:bg-gray-800"
+            className="glass-control rounded-lg p-2 text-slate-600 transition-colors hover:text-slate-950 lg:hidden dark:text-slate-300 dark:hover:text-white"
             aria-label="打开侧边栏"
           >
             <Menu className="size-5" />
@@ -32,9 +32,7 @@ export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
 
         <Link to="/" className="flex items-center gap-2 font-bold">
           <img src="/static/favicon.svg" alt="" className="size-7" />
-          <span className="hidden bg-gradient-to-r from-indigo-500 to-violet-500 bg-clip-text text-transparent sm:inline">
-            {siteConfig.name}
-          </span>
+          <span className="liquid-gradient-text hidden sm:inline">{siteConfig.name}</span>
         </Link>
 
         <nav className="ml-4 hidden items-center gap-1 md:flex">
@@ -43,7 +41,7 @@ export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
               key={link.path}
               to="/$"
               params={{ _splat: link.path.replace(/^\//, "") }}
-              className="rounded-md px-3 py-2 text-sm font-medium text-gray-600 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+              className="rounded-lg px-3 py-2 text-sm font-medium text-slate-600 transition-colors hover:bg-white/55 hover:text-slate-950 dark:text-slate-300 dark:hover:bg-white/10 dark:hover:text-white"
             >
               {link.text}
             </Link>
@@ -54,12 +52,12 @@ export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
           <button
             type="button"
             onClick={onOpenSearch}
-            className="flex items-center gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-1.5 text-sm text-gray-500 transition-colors hover:border-gray-300 dark:border-gray-800 dark:bg-gray-900 dark:text-gray-400 dark:hover:border-gray-700"
+            className="glass-control flex items-center gap-2 rounded-lg px-3 py-1.5 text-sm text-slate-500 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
             aria-label="搜索"
           >
             <Search className="size-4" />
             <span className="hidden sm:inline">搜索文档</span>
-            <kbd className="hidden rounded border border-gray-300 px-1.5 font-sans text-xs text-gray-400 sm:inline dark:border-gray-700">
+            <kbd className="hidden rounded border border-white/60 bg-white/35 px-1.5 font-sans text-xs text-slate-400 sm:inline dark:border-white/10 dark:bg-white/5 dark:text-slate-500">
               ⌘K
             </kbd>
           </button>
@@ -67,7 +65,7 @@ export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
           <button
             type="button"
             onClick={toggle}
-            className="rounded-md p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
+            className="glass-control rounded-lg p-2 text-slate-500 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
             aria-label="切换主题"
           >
             {theme === "dark" ? <Sun className="size-5" /> : <Moon className="size-5" />}
@@ -77,7 +75,7 @@ export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
             href="https://github.com"
             target="_blank"
             rel="noreferrer"
-            className="rounded-md p-2 text-gray-500 transition-colors hover:bg-gray-100 hover:text-gray-900 dark:hover:bg-gray-800 dark:hover:text-white"
+            className="glass-control rounded-lg p-2 text-slate-500 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
             aria-label="GitHub"
           >
             <Github className="size-5" />

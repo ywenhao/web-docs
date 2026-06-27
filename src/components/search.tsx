@@ -105,31 +105,31 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
     <div className="fixed inset-0 z-50 flex items-start justify-center p-4 pt-[10vh]">
       <button
         type="button"
-        className="absolute inset-0 bg-black/40 backdrop-blur-sm"
+        className="absolute inset-0 bg-slate-950/35 backdrop-blur-xl"
         onClick={onClose}
         aria-label="关闭搜索"
       />
       <div
-        className="relative w-full max-w-xl overflow-hidden rounded-xl border border-gray-200 bg-white shadow-2xl dark:border-gray-800 dark:bg-gray-900"
+        className="glass-surface relative w-full max-w-xl overflow-hidden rounded-lg"
         onKeyDown={onKeyDown}
       >
-        <div className="flex items-center gap-3 border-b border-gray-200 px-4 dark:border-gray-800">
-          <Search className="size-5 shrink-0 text-gray-400" />
+        <div className="flex items-center gap-3 border-b border-white/55 px-4 dark:border-white/10">
+          <Search className="size-5 shrink-0 text-slate-400" />
           <input
             ref={inputRef}
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             placeholder="搜索文档…"
-            className="w-full bg-transparent py-4 text-base outline-none placeholder:text-gray-400"
+            className="w-full bg-transparent py-4 text-base text-slate-900 outline-none placeholder:text-slate-400 dark:text-slate-100"
           />
-          <kbd className="rounded border border-gray-300 px-1.5 text-xs text-gray-400 dark:border-gray-700">
+          <kbd className="rounded border border-white/60 bg-white/35 px-1.5 text-xs text-slate-400 dark:border-white/10 dark:bg-white/5 dark:text-slate-500">
             Esc
           </kbd>
         </div>
 
         <div className="max-h-[60vh] overflow-y-auto p-2">
           {query.trim() && hits.length === 0 ? (
-            <p className="px-3 py-8 text-center text-sm text-gray-500">没有找到相关结果</p>
+            <p className="liquid-muted px-3 py-8 text-center text-sm">没有找到相关结果</p>
           ) : null}
 
           {hits.map((hit, i) => (
@@ -140,27 +140,27 @@ export function SearchModal({ open, onClose }: SearchModalProps) {
               onClick={() => go(hit.doc.path)}
               className={
                 i === active
-                  ? "flex w-full items-start gap-3 rounded-lg bg-indigo-50 px-3 py-2.5 text-left dark:bg-indigo-500/10"
-                  : "flex w-full items-start gap-3 rounded-lg px-3 py-2.5 text-left hover:bg-gray-50 dark:hover:bg-gray-800"
+                  ? "flex w-full items-start gap-3 rounded-lg bg-white/58 px-3 py-2.5 text-left shadow-sm dark:bg-white/10"
+                  : "flex w-full items-start gap-3 rounded-lg px-3 py-2.5 text-left hover:bg-white/38 dark:hover:bg-white/8"
               }
             >
-              <FileText className="mt-0.5 size-4 shrink-0 text-gray-400" />
+              <FileText className="mt-0.5 size-4 shrink-0 text-slate-400" />
               <span className="min-w-0">
                 <span className="flex items-center gap-2">
-                  <span className="truncate font-medium text-gray-900 dark:text-gray-100">
+                  <span className="truncate font-medium text-slate-950 dark:text-slate-100">
                     {hit.doc.title}
                   </span>
-                  <span className="shrink-0 rounded bg-gray-100 px-1.5 py-0.5 text-xs text-gray-500 dark:bg-gray-800">
+                  <span className="glass-control shrink-0 rounded px-1.5 py-0.5 text-xs text-slate-500 dark:text-slate-300">
                     {sectionLabel(hit.doc.section)}
                   </span>
                 </span>
-                <span className="mt-0.5 block truncate text-sm text-gray-500">{hit.snippet}</span>
+                <span className="liquid-muted mt-0.5 block truncate text-sm">{hit.snippet}</span>
               </span>
             </button>
           ))}
 
           {!query.trim() ? (
-            <p className="px-3 py-8 text-center text-sm text-gray-400">输入关键字搜索全部文档</p>
+            <p className="px-3 py-8 text-center text-sm text-slate-400">输入关键字搜索全部文档</p>
           ) : null}
         </div>
       </div>

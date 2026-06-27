@@ -28,13 +28,13 @@ export function DefaultLayout({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <div className="flex min-h-screen flex-col bg-white text-gray-900 dark:bg-gray-950 dark:text-gray-100">
+    <div className="liquid-shell flex min-h-screen flex-col text-slate-900 dark:text-slate-100">
       <Header onOpenSearch={() => setSearchOpen(true)} />
 
       <div className="flex-1">{children}</div>
 
-      <footer className="border-t border-gray-200 dark:border-gray-800">
-        <div className="mx-auto max-w-7xl px-6 py-8 text-sm text-gray-500">
+      <footer className="border-t border-white/50 bg-white/20 backdrop-blur-xl dark:border-white/10 dark:bg-slate-950/20">
+        <div className="liquid-muted mx-auto max-w-7xl px-6 py-8 text-sm">
           <p>Released under the MIT License.</p>
           <p className="mt-1">Copyright © 2024-PRESENT Ywenhao · {siteConfig.name}</p>
         </div>

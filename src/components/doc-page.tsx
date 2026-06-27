@@ -24,10 +24,10 @@ export function DocPage({ title, html, toc }: DocPageProps) {
   }, [title]);
 
   return (
-    <div className="mx-auto flex max-w-7xl gap-8 px-4 sm:px-6">
+    <div className="mx-auto flex max-w-7xl gap-8 px-4 pt-3 sm:px-6">
       {/* Left sidebar (desktop) */}
       <aside className="hidden w-60 shrink-0 lg:block">
-        <div className="sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto py-8 pr-2">
+        <div className="glass-surface sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto rounded-lg p-4">
           <DocSidebar />
         </div>
       </aside>
@@ -37,15 +37,15 @@ export function DocPage({ title, html, toc }: DocPageProps) {
         <div className="fixed inset-0 z-50 lg:hidden">
           <button
             type="button"
-            className="absolute inset-0 bg-black/40"
+            className="absolute inset-0 bg-slate-950/35 backdrop-blur-sm"
             onClick={() => setDrawerOpen(false)}
             aria-label="关闭侧边栏"
           />
-          <div className="absolute left-0 top-0 h-full w-72 overflow-y-auto bg-white p-6 shadow-xl dark:bg-gray-950">
+          <div className="glass-surface absolute left-3 top-3 h-[calc(100%-1.5rem)] w-72 overflow-y-auto rounded-lg p-6">
             <button
               type="button"
               onClick={() => setDrawerOpen(false)}
-              className="mb-4 ml-auto flex rounded-md p-1 text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800"
+              className="glass-control mb-4 ml-auto flex rounded-lg p-1.5 text-slate-500 transition-colors hover:text-slate-950 dark:text-slate-300 dark:hover:text-white"
               aria-label="关闭"
             >
               <X className="size-5" />
@@ -60,12 +60,12 @@ export function DocPage({ title, html, toc }: DocPageProps) {
         <button
           type="button"
           onClick={() => setDrawerOpen(true)}
-          className="mb-4 text-sm text-indigo-600 lg:hidden dark:text-indigo-300"
+          className="glass-control mb-4 rounded-lg px-3 py-2 text-sm font-medium text-sky-700 lg:hidden dark:text-sky-200"
         >
           目录 ☰
         </button>
         <article
-          className="prose prose-slate max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-pre:bg-transparent prose-pre:p-0"
+          className="prose prose-slate max-w-none dark:prose-invert prose-headings:scroll-mt-20 prose-headings:text-slate-950 prose-a:text-sky-700 prose-pre:bg-transparent prose-pre:p-0 dark:prose-headings:text-white dark:prose-a:text-sky-300"
           // Pre-rendered, sanitized at author time (our own docs). Shiki output.
           dangerouslySetInnerHTML={{ __html: html }}
         />
@@ -73,7 +73,7 @@ export function DocPage({ title, html, toc }: DocPageProps) {
 
       {/* Right outline (desktop, xl+) */}
       <aside className="hidden w-56 shrink-0 xl:block">
-        <div className="sticky top-16 max-h-[calc(100vh-4rem)] overflow-y-auto py-8">
+        <div className="glass-surface sticky top-24 max-h-[calc(100vh-7rem)] overflow-y-auto rounded-lg p-4">
           <DocToc toc={toc} />
         </div>
       </aside>
