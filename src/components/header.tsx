@@ -1,5 +1,5 @@
 import { Link, useLocation } from "@tanstack/react-router";
-import { Github, Menu, Moon, Search, Sun } from "lucide-react";
+import { LucideGitMerge, Menu, Moon, Search, Sun } from "lucide-react";
 import { activeNavKeyFromPath, navLinks } from "@/lib/doc-nav";
 import { siteConfig } from "@/lib/site";
 import { useTheme } from "@/lib/use-theme";
@@ -85,7 +85,7 @@ export function Header({ onOpenSearch, onOpenSidebar }: HeaderProps) {
             className="glass-control rounded-lg p-2 text-slate-500 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-white"
             aria-label="GitHub"
           >
-            <Github className="size-5" />
+            <LucideGitMerge className="size-5" />
           </a>
         </div>
       </div>
