@@ -4,12 +4,12 @@ import { absoluteUrl } from "@/lib/site";
 export const Route = createFileRoute("/robots.txt")({
   server: {
     handlers: {
-      GET: () => {
+      GET: ({ request }) => {
         const body = [
           "User-agent: *",
           "Allow: /",
           "",
-          `Sitemap: ${absoluteUrl("/sitemap.xml")}`,
+          `Sitemap: ${absoluteUrl("/sitemap.xml", request.url)}`,
           "",
         ].join("\n");
 

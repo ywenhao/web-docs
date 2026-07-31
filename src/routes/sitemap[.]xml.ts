@@ -14,12 +14,12 @@ function escapeXml(value: string): string {
 export const Route = createFileRoute("/sitemap.xml")({
   server: {
     handlers: {
-      GET: async () => {
+      GET: async ({ request }) => {
         const entries = await getSitemapEntries();
 
         const urls = entries
           .map((entry) => {
-            const parts = [`    <loc>${escapeXml(absoluteUrl(entry.path))}</loc>`];
+            const parts = [`    <loc>${escapeXml(absoluteUrl(entry.path, request.url))}</loc>`];
             if (entry.lastModified) {
               parts.push(`    <lastmod>${escapeXml(entry.lastModified)}</lastmod>`);
             }

@@ -11,16 +11,28 @@ function normalizeOrigin(value: string | undefined): string {
   return raw.replace(/\/+$/, "");
 }
 
+const configuredOrigin = import.meta.env.VITE_SITE_URL?.trim();
+
+function getSiteOrigin(requestUrl?: string): string {
+  if (configuredOrigin) {
+    return normalizeOrigin(configuredOrigin);
+  }
+  if (requestUrl) {
+    return new URL(requestUrl).origin;
+  }
+  return normalizeOrigin(undefined);
+}
+
 export const siteConfig = {
   name: "前端开发指南",
   description: "Vue3 的前端开发指南，涵盖开发规范、代码优化与学习方法。",
   /** Absolute origin, no trailing slash. */
-  url: normalizeOrigin(import.meta.env.VITE_SITE_URL),
+  url: getSiteOrigin(),
   locale: "zh-CN",
 } as const;
 
 /** Join a path onto the site origin, yielding an absolute URL. */
-export function absoluteUrl(path = "/"): string {
+export function absoluteUrl(path = "/", requestUrl?: string): string {
   const suffix = path.startsWith("/") ? path : `/${path}`;
-  return `${siteConfig.url}${suffix}`;
+  return `${getSiteOrigin(requestUrl)}${suffix}`;
 }
