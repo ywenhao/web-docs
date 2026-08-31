@@ -21,9 +21,13 @@ const config = defineConfig({
     ignorePatterns: ["**/routeTree.gen.ts", "docs/**"],
   },
   lint: {
+    plugins: ["import"],
     ignorePatterns: ["**/routeTree.gen.ts", "docs/**"],
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
-    rules: { "vite-plus/prefer-vite-plus-imports": "error" },
+    rules: {
+      "vite-plus/prefer-vite-plus-imports": "error",
+      "import/extensions": ["error", "always"],
+    },
     options: { typeAware: true, typeCheck: true },
   },
   test: {
