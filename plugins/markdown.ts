@@ -15,7 +15,7 @@
  */
 import type { Plugin } from "vite-plus";
 import matter from "gray-matter";
-import MarkdownIt from "markdown-it";
+import MarkdownIt, { type MarkdownIt as MarkdownItInstance } from "markdown-it";
 import anchor from "markdown-it-anchor";
 import removeMd from "remove-markdown";
 import {
@@ -26,7 +26,7 @@ import {
 import { fromHighlighter } from "@shikijs/markdown-it/core";
 import { createHighlighter } from "shiki";
 
-import type { TocItem } from "../types/docs";
+import type { TocItem } from "../types/docs.ts";
 
 const CODE_THEME = "one-dark-pro";
 
@@ -50,10 +50,10 @@ const LANGS = [
   "yaml",
 ];
 
-let mdPromise: Promise<MarkdownIt> | null = null;
+let mdPromise: Promise<MarkdownItInstance> | null = null;
 
 /** Lazily build a single shared markdown-it instance (highlighter is heavy). */
-async function getMarkdown(): Promise<MarkdownIt> {
+async function getMarkdown(): Promise<MarkdownItInstance> {
   if (!mdPromise) {
     mdPromise = (async () => {
       const highlighter = await createHighlighter({

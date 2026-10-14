@@ -5,9 +5,29 @@ import { tanstackStart } from "@tanstack/react-start/plugin/vite";
 
 import viteReact from "@vitejs/plugin-react";
 import tailwindcss from "@tailwindcss/vite";
-import { cloudflare } from "@cloudflare/vite-plugin";
+import { markdownPlugin } from "./plugins/markdown.ts";
 
-import { markdownPlugin } from "./plugins/markdown";
+// import { cloudflare } from "@cloudflare/vite-plugin";
+
+// Wrangler captures proxy settings when imported. Bypass the proxy for local
+// Workers/inspector requests while preserving the existing external bypasses.
+const existingNoProxy = (process.env.no_proxy || process.env.NO_PROXY || "").trim();
+const noProxy =
+  existingNoProxy === "*"
+    ? "*"
+    : [
+        ...new Set([
+          ...existingNoProxy.split(/[,\s]+/).filter(Boolean),
+          "localhost",
+          "127.0.0.1",
+          "::1",
+          "[::1]",
+        ]),
+      ].join(",");
+process.env.NO_PROXY = noProxy;
+process.env.no_proxy = noProxy;
+
+const { cloudflare } = await import("@cloudflare/vite-plugin");
 
 // The Cloudflare plugin wires the app into the Workers (workerd) runtime for
 // dev/build/deploy. It's incompatible with the jsdom test environment, so it's
@@ -22,13 +42,26 @@ const config = defineConfig({
   },
   lint: {
     plugins: ["import"],
+    options: { typeAware: true, typeCheck: true },
     ignorePatterns: ["**/routeTree.gen.ts", "docs/**"],
     jsPlugins: [{ name: "vite-plus", specifier: "vite-plus/oxlint-plugin" }],
     rules: {
       "vite-plus/prefer-vite-plus-imports": "error",
-      "import/extensions": ["error", "always"],
     },
-    options: { typeAware: true, typeCheck: true },
+    overrides: [
+      {
+        files: ["vite.config.ts"],
+        rules: {
+          "import/extensions": [
+            "error",
+            "always",
+            {
+              ignorePackages: true,
+            },
+          ],
+        },
+      },
+    ],
   },
   test: {
     globals: true,

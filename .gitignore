@@ -38,3 +38,4 @@ coverage
 # Misc generated
 __unconfig*
 todos.json
+.playwright-mcp

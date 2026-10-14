@@ -1,5 +1,15 @@
 # pnpm settings (pnpm 11+ reads project settings from here, not package.json)
 
+# Match the installed vite-plus and its bundled test runner when upgrading.
+overrides:
+  vite@*: npm:@voidzero-dev/vite-plus-core@1.1.0
+  vitest@*: 5.0.3
+
+peerDependencyRules:
+  allowedVersions:
+    # The core alias bundles Vite 8 but reports the Vite+ release version.
+    vite: "1.1.0"
+
 # Native deps allowed to run install scripts
 onlyBuiltDependencies:
   - esbuild
